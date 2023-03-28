@@ -1,0 +1,20 @@
+version: '3'
+services:
+  warp-container:
+    container_name: warp-container
+    image: ubuntu:latest
+    restart: 'no'
+    ports:
+      - 9000:9000/tcp
+    sysctls:
+#      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.conf.all.route_localnet=1
+    volumes:
+      - ./init.sh:/tmp/init.sh
+    environment:
+      - SERVERPORT=9000
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    command: bash -c "/tmp/init.sh"
+    #https://stackoverflow.com/questions/66287217/run-script-in-container-from-docker-compose
