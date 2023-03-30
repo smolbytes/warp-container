@@ -1,9 +1,10 @@
-version: '3'
+#version: '3'
 services:
   warp-container:
     container_name: warp-container
     image: ubuntu:latest
     restart: 'no'
+    tty: true  #helps while troubleshooting; sudo docker exec -it [containerID] /bin/bash
     ports:
       - 9000:9000/tcp
     sysctls:
@@ -16,5 +17,5 @@ services:
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
-    command: bash -c "/tmp/init.sh"
+    command: bash -c "/tmp/init.sh && /bin/bash"
     #https://stackoverflow.com/questions/66287217/run-script-in-container-from-docker-compose
