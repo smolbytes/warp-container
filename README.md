@@ -32,6 +32,6 @@ sudo docker compose down
 ```
   
   
-Limitations/Considerations: Proxied data between your browser and the container will not necessarily be encrypted. Take caution before deploying on a VPS, cloud instance, or over a publicly accessible network. Packets between the container and CF are encrypted via the cipher suites in WireGuard. Recommend proxying DNS via SOCKS5 along with web requests. warp-cli does not support SOCKS/HTTP authentication, and I have not yet coded a "go between" to enable that functionality. Please open an issue or dicussion post to report any bugs or odd behavior.  
+Limitations/Considerations: Proxied data between your browser and the container will not necessarily be encrypted. Take caution before deploying on a VPS, cloud instance, or over a publicly accessible network. Packets between the container and CF are encrypted via the cipher suites in WireGuard. Recommend proxying DNS via SOCKS5 along with web requests. warp-cli does not support SOCKS/HTTP authentication, and I have not yet coded a "go between" to enable that functionality. Please open an issue or discussion post to report any bugs or odd behavior.  
   
 Dependencies: Docker, Docker Compose, Ubuntu container base (latest version from Dockerhub)  
