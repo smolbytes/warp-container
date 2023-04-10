@@ -15,7 +15,7 @@ Recommendation: Always use a "first mile" VPN on the host VM or network running 
 ```
 git clone https://github.com/smolbytes/warp-container  
 cd warp-container  
-sudo chmod +x init.sh  
+sudo chmod +x init.sh  #If you are using Docker Desktop on windows, add the 'warp-container' folder to your list of shared drives/folders/volumes in docker's settings, instead of using this command
 sudo docker compose up -d warp-container  
 #wait approx 60 seconds  
 sudo docker ps -a   #check the health/status of your containers  #optional  
