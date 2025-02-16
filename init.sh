@@ -3,8 +3,8 @@
 #warp-cli installer inside container
 apt -q update
 #install dependencies
-apt -yq install --no-install-recommends coreutils curl grep ca-certificates gpg lsb-release iproute2 iptables
-#apt -yq install systemd systemd-sysv dbus dbus-user-session #not needed with warp-svc
+apt -yq install --no-install-recommends coreutils curl grep ca-certificates gpg lsb-release iproute2 iptables dbus dbus-user-session
+#apt -yq install systemd systemd-sysv #not needed with warp-svc
 #add cloudflare repo and install warp-cli
 curl https://pkg.cloudflareclient.com/pubkey.gpg | gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/cloudflare-client.list
@@ -21,7 +21,8 @@ warp-cli --accept-tos mode proxy
 #warp-cli --accept-tos set-proxy-port 9000 #depricated
 warp-cli --accept-tos proxy port 9000
 #warp-cli --accept-tos enable-always-on #depricated
-#warp-cli --accept-tos connect #let Dockerfile handle
+warp-cli --accept-tos connect
+warp-cli --accept-tos status
 
 #add routing rules to network interface
 #nic_name=$(ip -br l | awk '$1 !~ "lo>|vir|wl" { print $1}')  #TODO make this work in docker also
