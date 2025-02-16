@@ -13,16 +13,14 @@ apt -yq install cloudflare-warp  #no systemd in container, failures in apt log a
 #setup options
 nohup warp-svc &
 #warp-svc 1>/dev/null 2>/dev/null &
-sleep 10
-#warp-cli --accept-tos register  #depricated
+sleep 12
 warp-cli --accept-tos registration new
-#warp-cli --accept-tos set-mode proxy #depricated
+sleep 1
 warp-cli --accept-tos mode proxy
-#warp-cli --accept-tos set-proxy-port 9000 #depricated
 warp-cli --accept-tos proxy port 9000
-#warp-cli --accept-tos enable-always-on #depricated
 warp-cli --accept-tos connect
 warp-cli --accept-tos status
+warp-cli --accept-tos proxy port 9000
 
 #add routing rules to network interface
 #nic_name=$(ip -br l | awk '$1 !~ "lo>|vir|wl" { print $1}')  #TODO make this work in docker also
