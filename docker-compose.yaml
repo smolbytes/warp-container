@@ -12,6 +12,7 @@ services:
       - net.ipv4.conf.all.route_localnet=1
     volumes:
       - ./init.sh:/tmp/init.sh
+#      - /run/dbus/system_bus_socket:/run/dbus/system_bus_socket
     environment:
       - SERVERPORT=9000
     cap_add:
